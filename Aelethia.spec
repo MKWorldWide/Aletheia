@@ -5,12 +5,12 @@ a = Analysis(
     ['aelethia.py'],
     pathex=[],
     binaries=[],
-    datas=[('requirements.txt', '.')],
-    hiddenimports=['PyQt6', 'PyQt6.QtCore', 'PyQt6.QtGui', 'PyQt6.QtWidgets', 'cryptography', 'pkgutil'],
+    datas=[('IMG_8647.JPG', '.')],
+    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
-    excludes=[],
+    excludes=['PyQt6', 'PyQt6.QtCore', 'PyQt6.QtGui', 'PyQt6.QtWidgets'],
     noarchive=False,
     optimize=0,
 )
@@ -35,5 +35,4 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='NONE',
 )
