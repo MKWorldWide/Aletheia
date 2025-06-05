@@ -8,25 +8,29 @@ def build_executable():
         shutil.rmtree("dist")
     if os.path.exists("build"):
         shutil.rmtree("build")
-    
+
+    # Copy .env file to dist
+    if os.path.exists(".env"):
+        shutil.copy(".env", "dist/.env")
+
     # Build the executable
     PyInstaller.__main__.run([
         'aelethia.py',
         '--name=Aelethia',
         '--onefile',
         '--windowed',
-        '--icon=NONE',  # Add an icon file if you have one
-        '--add-data=requirements.txt;.',
-        '--hidden-import=PyQt6',
-        '--hidden-import=PyQt6.QtCore',
-        '--hidden-import=PyQt6.QtGui',
-        '--hidden-import=PyQt6.QtWidgets',
-        '--hidden-import=cryptography',
-        '--hidden-import=pkgutil',
+        '--add-data=IMG_8647.JPG;.',
+        '--add-data=.env;.',
+        '--exclude-module=PyQt6',
+        '--exclude-module=PyQt6.QtCore',
+        '--exclude-module=PyQt6.QtGui',
+        '--exclude-module=PyQt6.QtWidgets',
+        '--hidden-import=requests',
+        '--hidden-import=dotenv',
         '--clean',
         '--noconfirm'
     ])
-    
+
     print("Build completed! The executable can be found in the 'dist' directory.")
 
 if __name__ == "__main__":
