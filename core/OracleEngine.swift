@@ -1,32 +1,39 @@
 import Foundation
 
+/// Engine responsible for processing user queries and generating AI responses
 class OracleEngine: ObservableObject {
+    // MARK: - Published Properties
+    
     @Published private(set) var isProcessing = false
     @Published private(set) var lastResponse: String?
     @Published private(set) var error: String?
     
+    // MARK: - Private Properties
+    
     private var userProfile: UserProfile?
+    
+    // MARK: - Initialization
     
     init() {
         loadProfile()
     }
     
-    private func loadProfile() {
-        do {
-            userProfile = try SecureStorage.loadProfile()
-        } catch {
-            self.error = "Failed to load profile"
-        }
-    }
+    // MARK: - Public Methods
     
+    /// Process a user query and generate a response
+    /// - Parameter query: The user's question or input
     func processQuery(_ query: String) async {
         guard let profile = userProfile else {
-            error = "Profile not initialized"
+            await MainActor.run {
+                error = "Profile not initialized"
+            }
             return
         }
         
-        isProcessing = true
-        error = nil
+        await MainActor.run {
+            isProcessing = true
+            error = nil
+        }
         
         // TODO: Implement actual LLM integration
         // This is a placeholder that simulates processing
@@ -38,6 +45,21 @@ class OracleEngine: ObservableObject {
         await MainActor.run {
             self.lastResponse = response
             self.isProcessing = false
+        }
+    }
+    
+    /// Clear any current error state
+    func clearError() {
+        error = nil
+    }
+    
+    // MARK: - Private Methods
+    
+    private func loadProfile() {
+        do {
+            userProfile = try SecureStorage.loadProfile()
+        } catch {
+            self.error = "Failed to load profile: \(error.localizedDescription)"
         }
     }
     
@@ -53,8 +75,34 @@ class OracleEngine: ObservableObject {
         
         return responses.randomElement() ?? "I am still learning to understand your questions."
     }
-    
-    func clearError() {
-        error = nil
+}
+
+// MARK: - Error Handling
+
+extension OracleEngine {
+    /// Check if the engine is ready to process queries
+    var isReady: Bool {
+        userProfile != nil && error == nil
     }
+    
+    /// Get the current processing status
+    var status: ProcessingStatus {
+        if isProcessing {
+            return .processing
+        } else if error != nil {
+            return .error
+        } else if lastResponse != nil {
+            return .completed
+        } else {
+            return .idle
+        }
+    }
+}
+
+/// Status of the oracle engine
+enum ProcessingStatus {
+    case idle
+    case processing
+    case completed
+    case error
 } 
