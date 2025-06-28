@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Main application entry point for Aletheia AI Companion
 @main
 struct AelethiaApp: App {
     @StateObject private var appState = AppState()
@@ -13,19 +14,33 @@ struct AelethiaApp: App {
     }
 }
 
-// MARK: - App State
+// MARK: - App State Management
+
+/// Global application state manager
 class AppState: ObservableObject {
+    // MARK: - Published Properties
+    
     @Published var isOnboarded: Bool = false
     @Published var currentUser: UserProfile?
     @Published var isInitialized: Bool = false
     
+    // MARK: - Initialization
+    
     init() {
-        // Check if user has completed onboarding
-        self.isOnboarded = UserDefaults.standard.bool(forKey: "isOnboarded")
+        loadOnboardingState()
         loadUserProfile()
     }
     
+    // MARK: - Private Methods
+    
+    /// Load onboarding completion state from UserDefaults
+    private func loadOnboardingState() {
+        isOnboarded = UserDefaults.standard.bool(forKey: "isOnboarded")
+    }
+    
+    /// Load user profile from secure storage
     private func loadUserProfile() {
-        // TODO: Implement secure profile loading
+        // TODO: Implement secure profile loading using Keychain
+        // This will be implemented in a future update
     }
 } 
