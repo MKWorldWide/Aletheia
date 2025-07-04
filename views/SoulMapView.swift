@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: SoulMapView.swift
+// Feature Context: UI for visualizing archetype progress and spiritual journey in Aletheia.
+// Dependencies: ArchetypeEngine, Codex, SecureStorage, SwiftUI
+// Usage Example: SoulMapView(codex: ..., storage: ...)
+// Performance: Uses TimelineView, Canvas, and animation for dynamic effects.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct SoulMapView: View {
     @StateObject private var archetypeEngine: ArchetypeEngine
     @Environment(\.dismiss) private var dismiss

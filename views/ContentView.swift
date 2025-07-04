@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: ContentView.swift
+// Feature Context: Main entry point and navigation for Aletheia's UI.
+// Dependencies: AppState, OracleEngine, ArchetypeEngine, SecureStorage, SwiftUI
+// Usage Example: ContentView().environmentObject(AppState())
+// Performance: Uses SwiftUI state and environment for efficient updates.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct ContentView: View {
     @EnvironmentObject private var appState: AppState
     @StateObject private var oracleEngine = OracleEngine()

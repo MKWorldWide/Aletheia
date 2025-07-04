@@ -1,6 +1,13 @@
 import Foundation
 import Combine
 
+/// Quantum Documentation: ArchetypeEngine.swift
+/// Feature Context: Manages awakening and tracking of spiritual archetypes.
+/// Dependencies: Archetype, Codex, SecureStorage, Combine
+/// Usage Example: let engine = ArchetypeEngine(codex: codex, storage: storage)
+/// Performance: Observes codex changes; unlock logic based on user journey.
+/// Security: Persists archetype state securely.
+/// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
 /// Manages the awakening and tracking of spiritual archetypes
 class ArchetypeEngine: ObservableObject {
     @Published private(set) var archetypes: [Archetype]

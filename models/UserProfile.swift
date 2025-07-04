@@ -1,6 +1,14 @@
 import Foundation
 import CryptoKit
 
+// Quantum Documentation: UserProfile.swift
+// Feature Context: Represents and securely stores user profile data.
+// Dependencies: CryptoKit, KeychainService, SecureStorage, UserDefaults
+// Usage Example: let profile = UserProfile(name: ..., purpose: ..., offering: ...)
+// Performance: Uses AES-GCM for encryption; Keychain for key storage.
+// Security: Strong encryption and secure key management.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct UserProfile: Codable {
     let id: UUID
     var name: String

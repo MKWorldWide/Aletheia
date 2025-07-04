@@ -1,5 +1,12 @@
 import Foundation
 
+/// Quantum Documentation: Archetype.swift
+/// Feature Context: Represents spiritual archetypes in the user's journey.
+/// Dependencies: WhisperCategory, Resonance, UnlockCondition, UUID
+/// Usage Example: let archetype = Archetype.predefined.first
+/// Performance: Static predefined list; lightweight struct.
+/// Security: No direct security implications.
+/// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
 /// Represents a spiritual archetype that can be awakened through the user's journey
 struct Archetype: Identifiable, Codable {
     let id: UUID

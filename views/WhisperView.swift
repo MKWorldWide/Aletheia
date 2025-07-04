@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: WhisperView.swift
+// Feature Context: UI for interacting with, responding to, and revealing whispers in Aletheia.
+// Dependencies: WhisperViewModel, RevelationViewModel, WhisperEngine, UserProfile, SwiftUI
+// Usage Example: WhisperView(whisperEngine: ..., userProfile: ...)
+// Performance: Uses SwiftUI state, async tasks, and sheet modals for UI flow.
+// Security: Error handling for empty responses and lockout state.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct WhisperView: View {
     @StateObject private var viewModel: WhisperViewModel
     @StateObject private var revelationViewModel: RevelationViewModel

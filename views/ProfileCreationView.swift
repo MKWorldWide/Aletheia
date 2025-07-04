@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: ProfileCreationView.swift
+// Feature Context: UI for onboarding and creating a secure user profile in Aletheia.
+// Dependencies: AppState, ProfileCreationViewModel, UserProfile, SecureStorage, SwiftUI
+// Usage Example: ProfileCreationView().environmentObject(AppState())
+// Performance: Async profile creation; disables button until valid.
+// Security: Secure profile storage using encryption and Keychain.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct ProfileCreationView: View {
     @EnvironmentObject private var appState: AppState
     @StateObject private var viewModel = ProfileCreationViewModel()

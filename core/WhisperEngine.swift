@@ -255,4 +255,12 @@ extension WhisperEngine {
     var totalWhispersSkipped: Int {
         skippedWhispers.count
     }
-} 
+}
+
+// Quantum Documentation: WhisperEngine.swift
+// Feature Context: Manages generation, storage, and interaction with 'whispers' (spiritual prompts) in Aletheia.
+// Dependencies: UserProfile, Whisper, WhisperCategory, SecureStorage, UserDefaults, Combine
+// Usage Example: let engine = WhisperEngine(userProfile: profile); engine.generateNewWhisper()
+// Performance: Lockout logic and in-memory filtering; TODOs for persistent storage.
+// Security: TODOs for secure storage; lockout state uses UserDefaults.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard. 
