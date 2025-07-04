@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: ArchetypeView.swift
+// Feature Context: UI for displaying and interacting with spiritual archetypes in Aletheia.
+// Dependencies: Codex, SecureStorage, Archetype, SwiftUI
+// Usage Example: ArchetypeView(codex: ..., storage: ...)
+// Performance: Uses SwiftUI sheets and dynamic lists for archetype display.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct ArchetypeView: View {
     @StateObject private var archetypeEngine: ArchetypeEngine
     @Environment(\.dismiss) private var dismiss

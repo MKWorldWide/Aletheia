@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: OnboardingView.swift
+// Feature Context: UI for onboarding new users and introducing Aletheia's journey.
+// Dependencies: AppState, Theme, SwiftUI
+// Usage Example: OnboardingView().environmentObject(AppState())
+// Performance: Uses TabView and animation for smooth onboarding flow.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct OnboardingView: View {
     @EnvironmentObject private var appState: AppState
     @State private var currentPage = 0

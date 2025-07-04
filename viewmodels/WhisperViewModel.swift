@@ -1,6 +1,14 @@
 import Foundation
 import Combine
 
+// Quantum Documentation: WhisperViewModel.swift
+// Feature Context: ViewModel for managing whisper state, responses, and lockout logic in the UI.
+// Dependencies: WhisperEngine, Combine
+// Usage Example: let vm = WhisperViewModel(whisperEngine: ...)
+// Performance: Publishes state changes for UI; lockout error handling.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 class WhisperViewModel: ObservableObject {
     @Published var response: String = ""
     @Published var isRevealing: Bool = false

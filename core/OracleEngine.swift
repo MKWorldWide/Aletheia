@@ -1,5 +1,12 @@
 import Foundation
 
+/// Quantum Documentation: OracleEngine.swift
+/// Feature Context: Central AI engine for processing user queries and generating responses in Aletheia.
+/// Dependencies: UserProfile, SecureStorage, MainActor, Task, ProcessingStatus
+/// Usage Example: let engine = OracleEngine(); await engine.processQuery("What is my purpose?")
+/// Performance: Simulates async processing; real LLM integration will impact performance.
+/// Security: Profile loading uses SecureStorage; error handling for profile access.
+/// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
 /// Engine responsible for processing user queries and generating AI responses
 class OracleEngine: ObservableObject {
     // MARK: - Published Properties

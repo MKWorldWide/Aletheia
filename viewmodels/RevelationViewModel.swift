@@ -2,6 +2,14 @@ import Foundation
 import SwiftUI
 import Combine
 
+// Quantum Documentation: RevelationViewModel.swift
+// Feature Context: ViewModel for generating, animating, and sealing revelations in the UI.
+// Dependencies: RevelationEngine, WhisperEngine, Combine, SwiftUI
+// Usage Example: let vm = RevelationViewModel(revelationEngine: ..., whisperEngine: ...)
+// Performance: Async UI updates, animation control, error handling.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 class RevelationViewModel: ObservableObject {
     // MARK: - Published Properties
     

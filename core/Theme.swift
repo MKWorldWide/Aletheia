@@ -1,6 +1,13 @@
 import SwiftUI
 
 /// Global theme configuration for the Aletheia app
+// Quantum Documentation: Theme.swift
+// Feature Context: Global theme configuration for Aletheia UI/UX.
+// Dependencies: SwiftUI, Color, Font, Animation, View
+// Usage Example: .background(Theme.background), .font(Theme.titleFont)
+// Performance: Static properties for efficient access; minimal runtime overhead.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
 enum Theme {
     // MARK: - Colors
     

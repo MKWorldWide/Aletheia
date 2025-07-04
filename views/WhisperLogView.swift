@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: WhisperLogView.swift
+// Feature Context: UI for browsing, filtering, and burning answered whispers in Aletheia.
+// Dependencies: WhisperEngine, WhisperCategory, SwiftUI
+// Usage Example: WhisperLogView(whisperEngine: ...)
+// Performance: Uses LazyVStack and filtering for efficient rendering.
+// Security: Burn confirmation to prevent accidental data loss.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct WhisperLogView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var selectedCategory: WhisperCategory?

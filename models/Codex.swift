@@ -109,4 +109,12 @@ struct Chapter: Identifiable {
     let number: Int
     let title: String
     var revelations: [SealedRevelation]
-} 
+}
+
+// Quantum Documentation: Codex.swift
+// Feature Context: Stores and manages user's sealed revelations.
+// Dependencies: SealedRevelation, Chapter, SecureStorage, Revelation
+// Usage Example: let codex = Codex(storage: storage); try await codex.sealRevelation(revelation)
+// Performance: Async storage; chapter/page logic for organization.
+// Security: TODOs for secure storage.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard. 

@@ -19,6 +19,13 @@ struct Revelation {
 }
 
 /// The core engine that generates sacred revelations
+// Quantum Documentation: RevelationEngine.swift
+// Feature Context: Core engine for generating sacred revelations from user responses.
+// Dependencies: UserProfile, SecureStorage, Whisper, Revelation, ResponseAnalysis
+// Usage Example: let engine = RevelationEngine(userProfile: ..., storage: ...); let rev = await engine.generateRevelation(...)
+// Performance: Async generation; template-based for now, AI integration planned.
+// Security: TODOs for secure storage; no direct user data exposure.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
 class RevelationEngine {
     private let userProfile: UserProfile
     private let storage: SecureStorage

@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: CodexView.swift
+// Feature Context: UI for browsing and interacting with the user's sealed revelations in Aletheia.
+// Dependencies: Codex, SecureStorage, SealedRevelation, SwiftUI
+// Usage Example: CodexView(codex: ...)
+// Performance: Uses SwiftUI lists and async data loading.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct CodexView: View {
     @StateObject private var codex: Codex
     @StateObject private var archetypeEngine: ArchetypeEngine

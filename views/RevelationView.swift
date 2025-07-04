@@ -1,5 +1,13 @@
 import SwiftUI
 
+// Quantum Documentation: RevelationView.swift
+// Feature Context: UI for displaying and sealing revelations generated from user responses.
+// Dependencies: RevelationViewModel, Whisper, SwiftUI
+// Usage Example: RevelationView(whisper: ..., response: ..., viewModel: ...)
+// Performance: Animates orb and text; async revelation generation.
+// Security: No direct security implications.
+// Changelog: [2024-06-10] Upgraded documentation to quantum-detailed standard.
+
 struct RevelationView: View {
     @StateObject private var viewModel: RevelationViewModel
     @Environment(\.dismiss) private var dismiss
