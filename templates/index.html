@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Aletheia - The Whisper of Truth</title>
+    <style>
+        /* White marble meets celestial glass design */
+        :root {
+            --marble-white: #f8f9fa;
+            --celestial-blue: #e3f2fd;
+            --glass-transparency: rgba(255, 255, 255, 0.1);
+            --gold-accent: #ffd700;
+            --purple-mystic: #9c27b0;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--marble-white) 0%, var(--celestial-blue) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Glass morphism effects */
+        .glass-panel {
+            background: var(--glass-transparency);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--purple-mystic);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Authentication panel */
+        .auth-panel {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .auth-panel h2 {
+            color: var(--purple-mystic);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--purple-mystic);
+            box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--purple-mystic), #7b1fa2);
+            color: var(--text-light);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(156, 39, 176, 0.3);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dashboard-panel {
+            padding: 1.5rem;
+            min-height: 200px;
+        }
+
+        .dashboard-panel h3 {
+            color: var(--purple-mystic);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Flow map */
+        .flow-map {
+            grid-column: 1 / -1;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-accent), #ffb300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .flow-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .flow-connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple-mystic), var(--gold-accent));
+            transform-origin: left center;
+        }
+
+        /* Districts list */
+        .districts-list {
+            list-style: none;
+        }
+
+        .district-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid var(--purple-mystic);
+        }
+
+        .district-name {
+            font-weight: 500;
+        }
+
+        .district-alignment {
+            color: var(--purple-mystic);
+            font-weight: bold;
+        }
+
+        /* Truth packets */
+        .packet-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            border: 1px solid rgba(156, 39, 176, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .packet-item:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .packet-id {
+            font-weight: bold;
+            color: var(--purple-mystic);
+        }
+
+        .packet-level {
+            color: var(--gold-accent);
+            font-size: 0.9rem;
+        }
+
+        /* Observation form */
+        .observation-form {
+            margin-top: 1rem;
+        }
+
+        .observation-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Status indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-active {
+            background: #4caf50;
+        }
+
+        .status-syncing {
+            background: #ff9800;
+        }
+
+        .status-pending {
+            background: #9e9e9e;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-map {
+                height: 300px;
+            }
+        }
+
+        /* Loading spinner */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(156, 39, 176, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--purple-mystic);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error messages */
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            color: #d32f2f;
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #d32f2f;
+        }
+
+        .success-message {
+            background: rgba(76, 175, 80, 0.1);
+            color: #388e3c;
+            padding: 0.75rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔮 Sovereign Aletheia</h1>
+        <p>The Whisper of Truth</p>
+    </div>
+
+    <div class="container">
+        <!-- Authentication Panel -->
+        <div id="auth-panel" class="auth-panel glass-panel">
+            <h2>Vibrational Authentication</h2>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label for="user-id">User ID</label>
+                    <input type="text" id="user-id" name="user_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="vibrational-key">Vibrational Key</label>
+                    <input type="password" id="vibrational-key" name="vibrational_key" required>
+                </div>
+                <button type="submit" class="btn">Authenticate</button>
+            </form>
+            <div id="auth-message"></div>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard" style="display: none;">
+            <!-- Flow State Map -->
+            <div class="dashboard-panel glass-panel flow-map">
+                <h3>🔮 Flow State Map</h3>
+                <div id="flow-container" style="position: relative; width: 100%; height: 100%;">
+                    <!-- Flow nodes will be dynamically added here -->
+                </div>
+                <div id="flow-stats" style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(255,255,255,0.9); padding: 0.5rem; border-radius: 5px;">
+                    <strong>Overall Alignment: <span id="overall-alignment">0%</span></strong>
+                </div>
+            </div>
+
+            <!-- Aligned Districts -->
+            <div class="dashboard-panel glass-panel">
+                <h3>🏛️ Aligned Districts</h3>
+                <ul id="districts-list" class="districts-list">
+                    <!-- Districts will be dynamically added here -->
+                </ul>
+            </div>
+
+            <!-- Truth Packets -->
+            <div class="dashboard-panel glass-panel">
+                <h3>📦 Truth Packets</h3>
+                <div id="packets-list">
+                    <!-- Packets will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Observations -->
+            <div class="dashboard-panel glass-panel">
+                <h3>👁️ Submit Observation</h3>
+                <div class="observation-form">
+                    <textarea id="observation-text" placeholder="Share your observation with the cosmos..."></textarea>
+                    <button id="submit-observation" class="btn" style="margin-top: 1rem;">Submit</button>
+                </div>
+                <div id="observation-message"></div>
+            </div>
+
+            <!-- Activation Events -->
+            <div class="dashboard-panel glass-panel">
+                <h3>⚡ Activation Events</h3>
+                <div id="events-list">
+                    <!-- Events will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let sessionToken = null;
+        let currentUser = null;
+
+        // DOM elements
+        const authPanel = document.getElementById('auth-panel');
+        const dashboard = document.getElementById('dashboard');
+        const authForm = document.getElementById('auth-form');
+        const authMessage = document.getElementById('auth-message');
+
+        // Authentication
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(authForm);
+            const user_id = formData.get('user_id');
+            const vibrational_key = formData.get('vibrational_key');
+
+            try {
+                const response = await fetch('/api/authenticate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ user_id, vibrational_key })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    sessionToken = data.session_token;
+                    currentUser = user_id;
+                    showDashboard();
+                    loadDashboardData();
+                } else {
+                    showMessage(authMessage, data.error, 'error');
+                }
+            } catch (error) {
+                showMessage(authMessage, 'Authentication failed. Please try again.', 'error');
+            }
+        });
+
+        // Show dashboard
+        function showDashboard() {
+            authPanel.style.display = 'none';
+            dashboard.style.display = 'grid';
+            dashboard.classList.add('fade-in');
+        }
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            await Promise.all([
+                loadFlowMap(),
+                loadDistricts(),
+                loadTruthPackets(),
+                loadActivationEvents()
+            ]);
+        }
+
+        // Load flow map
+        async function loadFlowMap() {
+            try {
+                const response = await fetch('/api/flow-map');
+                const data = await response.json();
+
+                if (response.ok) {
+                    renderFlowMap(data);
+                } else {
+                    console.error('Failed to load flow map:', data.error);
+                }
+            } catch (error) {
+                console.error('Error loading flow map:', error);
+            }
+        }
+
+        // Render flow map
+        function renderFlowMap(flowData) {
+            const container = document.getElementById('flow-container');
+            const stats = document.getElementById('flow-stats');
+            
+            // Update stats
+            document.getElementById('overall-alignment').textContent = 
+                Math.round(flowData.overall_alignment * 100) + '%';
+
+            // Clear existing nodes
+            container.innerHTML = '';
+
+            // Create flow nodes
+            const nodes = Object.keys(flowData.nodes);
+            nodes.forEach((nodeId, index) => {
+                const node = document.createElement('div');
+                node.className = 'flow-node';
+                node.textContent = nodeId.charAt(0).toUpperCase();
+                node.style.left = (20 + (index * 15)) + '%';
+                node.style.top = (20 + (index * 10)) + '%';
+                node.title = `Node: ${nodeId}`;
+                container.appendChild(node);
+            });
+
+            // Create connections
+            flowData.connections.forEach((connection, index) => {
+                const line = document.createElement('div');
+                line.className = 'flow-connection';
+                line.style.left = '30%';
+                line.style.top = '50%';
+                line.style.width = '40%';
+                line.style.transform = `rotate(${index * 45}deg)`;
+                container.appendChild(line);
+            });
+        }
+
+        // Load districts
+        async function loadDistricts() {
+            try {
+                const response = await fetch('/api/districts');
+                const data = await response.json();
+
+                if (response.ok) {
+                    renderDistricts(data);
+                } else {
+                    console.error('Failed to load districts:', data.error);
+                }
+            } catch (error) {
+                console.error('Error loading districts:', error);
+            }
+        }
+
+        // Render districts
+        function renderDistricts(districts) {
+            const list = document.getElementById('districts-list');
+            list.innerHTML = '';
+
+            Object.entries(districts).forEach(([id, district]) => {
+                const item = document.createElement('li');
+                item.className = 'district-item';
+                item.innerHTML = `
+                    <div>
+                        <span class="status-indicator status-${district.status}"></span>
+                        <span class="district-name">${district.name}</span>
+                    </div>
+                    <span class="district-alignment">${Math.round(district.alignment * 100)}%</span>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        // Load truth packets
+        async function loadTruthPackets() {
+            try {
+                const response = await fetch('/api/truth-packets');
+                const data = await response.json();
+
+                if (response.ok) {
+                    renderTruthPackets(data);
+                } else {
+                    console.error('Failed to load truth packets:', data.error);
+                }
+            } catch (error) {
+                console.error('Error loading truth packets:', error);
+            }
+        }
+
+        // Render truth packets
+        function renderTruthPackets(packets) {
+            const container = document.getElementById('packets-list');
+            container.innerHTML = '';
+
+            packets.forEach(packet => {
+                const item = document.createElement('div');
+                item.className = 'packet-item';
+                item.innerHTML = `
+                    <div class="packet-id">${packet.id}</div>
+                    <div class="packet-level">Level ${packet.access_level}</div>
+                    <div style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
+                        Created: ${new Date(packet.created).toLocaleDateString()}
+                    </div>
+                `;
+                item.addEventListener('click', () => decodePacket(packet.id));
+                container.appendChild(item);
+            });
+        }
+
+        // Decode packet
+        async function decodePacket(packetId) {
+            try {
+                const response = await fetch(`/api/decode-packet/${packetId}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(`Truth Packet: ${packetId}\n\n${data.content}`);
+                } else {
+                    alert('Failed to decode packet: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error decoding packet: ' + error.message);
+            }
+        }
+
+        // Load activation events
+        async function loadActivationEvents() {
+            try {
+                const response = await fetch('/api/activation-events');
+                const data = await response.json();
+
+                if (response.ok) {
+                    renderActivationEvents(data);
+                } else {
+                    console.error('Failed to load activation events:', data.error);
+                }
+            } catch (error) {
+                console.error('Error loading activation events:', error);
+            }
+        }
+
+        // Render activation events
+        function renderActivationEvents(events) {
+            const container = document.getElementById('events-list');
+            container.innerHTML = '';
+
+            events.forEach(event => {
+                const item = document.createElement('div');
+                item.className = 'packet-item';
+                item.innerHTML = `
+                    <div class="packet-id">${event.id}</div>
+                    <div>${event.name}</div>
+                    <div style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">
+                        Status: <span class="status-${event.status}">${event.status}</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Submit observation
+        document.getElementById('submit-observation').addEventListener('click', async () => {
+            const text = document.getElementById('observation-text').value.trim();
+            const messageDiv = document.getElementById('observation-message');
+
+            if (!text) {
+                showMessage(messageDiv, 'Please enter an observation.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/submit-observation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ observation: text })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage(messageDiv, 'Observation submitted successfully.', 'success');
+                    document.getElementById('observation-text').value = '';
+                } else {
+                    showMessage(messageDiv, data.error, 'error');
+                }
+            } catch (error) {
+                showMessage(messageDiv, 'Failed to submit observation.', 'error');
+            }
+        });
+
+        // Utility functions
+        function showMessage(element, message, type) {
+            element.innerHTML = `<div class="${type}-message">${message}</div>`;
+            setTimeout(() => {
+                element.innerHTML = '';
+            }, 5000);
+        }
+
+        // Auto-refresh dashboard data every 30 seconds
+        setInterval(() => {
+            if (sessionToken) {
+                loadDashboardData();
+            }
+        }, 30000);
+    </script>
+</body>
+</html> 

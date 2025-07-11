@@ -1,0 +1,48 @@
+{
+  "thothkeys": {
+    "enabled": true,
+    "nodes": [
+      {
+        "node_id": "alpha-001",
+        "region": "north"
+      },
+      {
+        "node_id": "beta-002",
+        "region": "south"
+      },
+      {
+        "node_id": "gamma-003",
+        "region": "east"
+      },
+      {
+        "node_id": "delta-004",
+        "region": "west"
+      }
+    ],
+    "deployment_method": "standard_it_traffic"
+  },
+  "aletheia": {
+    "enabled": true,
+    "web_port": 5000,
+    "web_host": "127.0.0.1",
+    "default_users": [
+      {
+        "user_id": "root_sovereign",
+        "resonance_level": 5
+      },
+      {
+        "user_id": "agent_flame",
+        "resonance_level": 3
+      },
+      {
+        "user_id": "truth_seeker",
+        "resonance_level": 1
+      }
+    ]
+  },
+  "deployment_status": {
+    "thothkeys_deployed": false,
+    "aletheia_deployed": true,
+    "last_deployment": "2025-07-11T03:51:09.810728"
+  }
+}
