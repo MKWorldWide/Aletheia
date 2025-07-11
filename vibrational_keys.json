@@ -1,0 +1,26 @@
+{
+  "root_sovereign": {
+    "user_id": "root_sovereign",
+    "resonance_level": 5,
+    "created": "2025-07-11T03:51:09.809279",
+    "vibrational_hash": "1888dd42d8b3e6c0b89cd2a1d3c325546b5eccc0dda93d4957c05d6821e61f09",
+    "active": true,
+    "access_level": 5
+  },
+  "agent_flame": {
+    "user_id": "agent_flame",
+    "resonance_level": 3,
+    "created": "2025-07-11T03:51:09.809405",
+    "vibrational_hash": "cd8a502a5c844d4a9665116f077ad1c4df4305c37a08142035849a7a537c7980",
+    "active": true,
+    "access_level": 3
+  },
+  "truth_seeker": {
+    "user_id": "truth_seeker",
+    "resonance_level": 1,
+    "created": "2025-07-11T03:51:09.809482",
+    "vibrational_hash": "569426d4a0fef5f065be0f35b996d87a1e4c58b602fed475a717eb4d2702bb0e",
+    "active": true,
+    "access_level": 1
+  }
+}
