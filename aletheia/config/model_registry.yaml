@@ -1,0 +1,4 @@
+# Placeholder for model registry
+models:
+  - name: default-llm
+    provider: openai
