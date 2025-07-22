@@ -1,10 +1,7 @@
 """Very small symbolic logic engine."""
-
 from __future__ import annotations
 
-
 from .symbol_table import SymbolTable
-
 
 class LogicEngine:
     """Evaluate the truthiness of statements using a symbol table."""

@@ -1,9 +1,7 @@
 """Simple truth inference engine."""
-
 from __future__ import annotations
 
 from .logic_engine import LogicEngine
-
 
 class TruthInferenceEngine:
     """Evaluate statements using the underlying logic engine."""

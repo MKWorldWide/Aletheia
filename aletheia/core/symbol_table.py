@@ -1,9 +1,7 @@
 """Symbol table for storing named values."""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
-
 
 @dataclass
 class Symbol:
@@ -11,7 +9,6 @@ class Symbol:
 
     name: str
     value: str
-
 
 class SymbolTable:
     """Registry of symbols used by the logic engine."""
