@@ -1,4 +1,5 @@
 """LLM orchestration agent."""
+3vszgw-codex/generate-aletheia-repo-scaffold
 
 from __future__ import annotations
 
@@ -26,4 +27,3 @@ class AletheiaOracle:
                 return chat["choices"][0]["message"]["content"].strip()
             except Exception:
                 pass
-        return f"Oracle says: {prompt}"

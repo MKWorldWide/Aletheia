@@ -1,5 +1,4 @@
 """Simple Streamlit dashboard for Aletheia."""
-
 from __future__ import annotations
 
 import streamlit as st
@@ -7,10 +6,8 @@ import streamlit as st
 from aletheia.core.inference import TruthInferenceEngine
 from aletheia.agents.aletheia_oracle import AletheiaOracle
 
-
 engine = TruthInferenceEngine()
 oracle = AletheiaOracle()
-
 
 st.title("Aletheia Dashboard")
 

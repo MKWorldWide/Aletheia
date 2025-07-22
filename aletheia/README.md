@@ -14,6 +14,7 @@ aletheia/
 ├── tests/       # Unit tests
 ```
 
+3vszgw-codex/generate-aletheia-repo-scaffold
 Run `python run.py` to start a demo API with three endpoints:
 
 * `/truth` - evaluate a statement against stored facts.

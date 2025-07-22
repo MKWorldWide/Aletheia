@@ -4,9 +4,7 @@ from __future__ import annotations
 from fastapi import FastAPI
 
 from aletheia.agents.aletheia_oracle import AletheiaOracle
-
 from aletheia.core.inference import TruthInferenceEngine
-
 
 app = FastAPI()
 engine = TruthInferenceEngine()
