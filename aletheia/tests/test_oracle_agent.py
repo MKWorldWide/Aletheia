@@ -6,3 +6,4 @@ def test_oracle_response() -> None:
     oracle = AletheiaOracle()
     response = oracle.generate_response("test")
     assert "Oracle says:" in response
+

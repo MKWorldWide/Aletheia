@@ -5,3 +5,4 @@ def test_endpoints_present() -> None:
     assert "/fact" in routes
     assert "/truth" in routes
     assert "/ask" in routes
+
