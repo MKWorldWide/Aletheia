@@ -16,3 +16,4 @@ def test_truth_engine_returns_correct_results() -> None:
     # Type safety
     assert isinstance(engine.evaluate("sky is blue."), bool)
     assert isinstance(engine.evaluate(""), bool)
+

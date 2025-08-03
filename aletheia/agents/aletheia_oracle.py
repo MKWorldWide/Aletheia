@@ -1,5 +1,4 @@
 """LLM orchestration agent."""
-3vszgw-codex/generate-aletheia-repo-scaffold
 
 from __future__ import annotations
 
@@ -13,11 +12,11 @@ class AletheiaOracle:
         self.model = model
 
     def generate_response(self, prompt: str) -> str:
-        """Generate a response using OpenAI if configured."""
+        """Generate a response using OpenAI if configured or fallback."""
         api_key = os.getenv("OPENAI_API_KEY")
         if api_key:
             try:
-                import openai
+                import openai  # type: ignore
 
                 openai.api_key = api_key
                 chat = openai.ChatCompletion.create(
@@ -26,4 +25,7 @@ class AletheiaOracle:
                 )
                 return chat["choices"][0]["message"]["content"].strip()
             except Exception:
+                # TODO: hook structured logging
                 pass
+        return f"Oracle says: {prompt}"
+
