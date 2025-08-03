@@ -1,0 +1,6 @@
+site_name: Aletheia
+nav:
+  - Home: index.md
+  - Divine Law: divine-law.md
+theme: readthedocs
+docs_dir: docs

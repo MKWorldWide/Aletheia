@@ -1,8 +1,9 @@
 """Entry point for running a minimal Aletheia API."""
 
 from fastapi import FastAPI
-from aletheia.core.inference import TruthInferenceEngine
+
 from aletheia.agents.aletheia_oracle import AletheiaOracle
+from aletheia.core.inference import TruthInferenceEngine
 
 app = FastAPI(title="Aletheia")
 engine = TruthInferenceEngine()
@@ -32,4 +33,6 @@ def ask_oracle(question: str) -> dict:
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
