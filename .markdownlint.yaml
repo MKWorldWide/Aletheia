@@ -1,0 +1,43 @@
+# Default state for all rules
+default: true
+
+# Line length
+MD013: false  # Line length
+
+# Unordered list indentation
+MD007:
+  indent: 2
+  start_indented: false
+  start_indent: 1
+
+# Ordered list item prefix
+MD029: "one"  # Ordered list item prefix (1. 2. 3.)
+
+# Multiple headers with the same content
+MD024:
+  siblings_only: true
+
+# Multiple top-level headers in the same document
+MD025:
+  level: 1
+
+# Trailing spaces
+MD009: false  # Allow trailing spaces for line breaks
+
+# Multiple consecutive blank lines
+MD012: false  # Allow multiple consecutive blank lines
+
+# Inline HTML
+MD033: false  # Allow inline HTML
+
+# Bare URLs
+MD034: false  # Allow bare URLs
+
+# First line in file should be a top-level header
+MD041: false  # Disable first line header check
+
+# First line in file should not be empty
+MD042: false  # Disable first line empty check
+
+# File should end with a single newline character
+MD047: false  # Disable single newline at end of file

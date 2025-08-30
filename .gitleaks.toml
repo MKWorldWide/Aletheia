@@ -1,0 +1,152 @@
+# Gitleaks configuration for Aletheia
+# This file defines what secrets to scan for in the repository
+
+# Default configuration
+[allowlist]
+  # Files to exclude from scanning
+  paths = [
+    "**/*.md",
+    "**/*.txt",
+    "**/testdata/**",
+    "**/vendor/**",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/__pycache__/**",
+    "**/*.min.*",
+    "**/*.bundle.*"
+  ]
+
+  # Specific secrets to allow (e.g., test credentials)
+  regexes = [
+    "test.*key",
+    "example.*key",
+    "dummy.*key"
+  ]
+
+  # Commit hashes to ignore
+  commits = [
+    "commit-hash-here"
+  ]
+
+# Rules for detecting secrets
+[[rules]]
+  id = "aws-access-key-id"
+  description = "AWS Access Key ID"
+  regex = '''(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'''
+  tags = ["key", "AWS"]
+
+[[rules]]
+  id = "aws-secret-access-key"
+  description = "AWS Secret Access Key"
+  regex = '''(?i)aws(.{0,20})?(?-i)['\"][0-9a-zA-Z\/+]{40}['\"]'''
+  tags = ["key", "AWS"]
+
+[[rules]]
+  id = "github-pat"
+  description = "GitHub Personal Access Token"
+  regex = '''ghp_[0-9a-zA-Z]{36}'''
+  tags = ["key", "GitHub"]
+
+[[rules]]
+  id = "github-oauth"
+  description = "GitHub OAuth Token"
+  regex = '''gho_[0-9a-zA-Z]{36}'''
+  tags = ["key", "GitHub"]
+
+[[rules]]
+  id = "slack-token"
+  description = "Slack Token"
+  regex = '''xox[baprs]-([0-9a-zA-Z]{10,48})?'''
+  tags = ["key", "Slack"]
+
+[[rules]]
+  id = "private-key"
+  description = "Private Key"
+  regex = '''-----BEGIN[\s\S]*?PRIVATE KEY[\s\S]*?KEY-----'''
+  tags = ["key", "crypto"]
+
+[[rules]]
+  id = "password-in-url"
+  description = "Password in URL"
+  regex = '''[a-zA-Z]{3,10}://[^/\s:@]{3,20}:[^/\s:@]{3,20}@[^/\s:@]{2,256}\.[a-z]{2,4}'''
+  tags = ["credentials"]
+
+[[rules]]
+  id = "api-key"
+  description = "Generic API Key"
+  regex = '''(?i)(api[_-]?key|apikey|secret[_-]?key|secret[_-]?token)[\s:=]['\"]?([0-9a-zA-Z\-_=]{20,100})['\"]?'''
+  tags = ["key", "api"]
+
+[[rules]]
+  id = "jwt"
+  description = "JSON Web Token"
+  regex = '''eyJ[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9\-_]+'''
+  tags = ["jwt", "token"]
+
+[[rules]]
+  id = "email"
+  description = "Email address"
+  regex = '''(?i)([a-z0-9_\-\.]+)@([a-z0-9_\-\.]+)\.([a-z]{2,5})'''
+  tags = ["email"]
+
+# Add more rules as needed for your specific use case
+
+# Global settings
+[allow]
+  # Allow specific files
+  files = [
+    "**/*.md",
+    "**/*.txt"
+  ]
+
+  # Allow specific commits
+  commits = []
+
+  # Allow specific paths
+  paths = [
+    "**/testdata/**",
+    "**/vendor/**"
+  ]
+
+  # Allow specific regex patterns
+  regexes = [
+    "test.*key",
+    "example.*key",
+    "dummy.*key"
+  ]
+
+# Configure the scanner behavior
+[config]
+  # Exit code when leaks are found (0 = success, 1 = failure)
+  exit-code = 1
+  
+  # Output format (json, csv, sarif, or custom)
+  format = "json"
+  
+  # Path to output file
+  output = "gitleaks-report.json"
+  
+  # Redact secret from log messages and reports
+  redact = true
+  
+  # Show secrets in the output (not recommended for CI/CD)
+  verbose = false
+  
+  # Scan only staged changes
+  staged = false
+  
+  # Show all findings, including those that are allowed
+  show-all = false
+  
+  # Maximum number of leaks to detect before stopping (0 = no limit)
+  max-target-megabytes = 0
+  
+  # Timeout for the scan
+  timeout = "5m"
+  
+  # Include git diff in the output
+  diff = false
+  
+  # Enable/disable color output
+  color = true
